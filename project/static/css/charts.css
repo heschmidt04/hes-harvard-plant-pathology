@@ -1,0 +1,70 @@
+svg,
+.container {
+  fill: transparent;
+  overflow: visible;
+}
+
+.slide {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  margin: 100px 0 0 0;
+  width: 100%;
+}
+
+.label {
+  fill: black;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: lighter;
+  text-anchor: middle;
+}
+
+.result {
+  font-family: sans-serif;
+  text-anchor: middle;
+}
+
+.resultD {
+  fill: black;
+  font-size: 21pt;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.resultS {
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 14px;
+}
+
+.resultL {
+  fill: black;
+  font-size: 18px;
+}
+
+.bar {
+  fill: rgb(120, 198, 121);
+  font-color: rgb(120, 198, 121);
+}
+
+.bar_hover {
+  fill: rgb(0, 104, 55);
+}
+
+.barG text.hover,
+.segment text.hover {
+  font-weight: bold;
+}
+
+/*.segment path.hover {*/
+/*    stroke: black;*/
+/*}*/
+
+.tooltip {
+  fill: white;
+  background-color: white;
+}
+
+.tooltip p {
+  stroke: black;
+}

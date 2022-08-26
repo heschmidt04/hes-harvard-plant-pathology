@@ -1,0 +1,70 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Users {% endblock title %}
+
+{% block styles %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block content %}
+{% include "includes/navigation-light.html" %}
+<header style="padding-top:50px">
+	<h1>User List</h1>
+</header>
+
+<table class="table">
+  <thead>
+	<tr>
+	  <th scope="col">User ID</th>
+	  <th scope="col">Username</th>
+	  <th scope="col">Password</th>
+	  <th scope="col">Date Registered</th>
+	</tr>
+  </thead>
+  <tbody>
+	{% for user in users %}
+	<tr>
+	  <td>{{ user.uid }}</td>
+	  <td>{{ user.username }}</td>
+	  <td>{{ user.password }}</td>
+	  <td>{{ user.date_registered }}</td>
+	</tr>
+	{% endfor %}
+  </tbody>
+</table>
+
+<section class="py-7">
+	<div class="container">
+	  <div class="row justify-space-between py-2">
+      <div class="col-lg-4 mx-auto">
+        <ul class="pagination pagination-primary m-4">
+          <li class="page-item">
+          <a class="page-link" href="/users/{{ pages.begin }}/{{limit}}">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">First</span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="/users/{{ pages.prev }}/{{limit}}" aria-label="Previous">
+          <span aria-hidden="true"><i class="fa fa-angle-double-left" aria-hidden="true"></i></span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="/users/{{ pages.next }}/{{limit}}" aria-label="Next">
+          <span aria-hidden="true"><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="/users/{{ pages.end }}/{{limit}}">
+          <span class="sr-only">Last</span>
+          <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+        </ul>
+      </div>
+    </div>
+	</div>
+</section>
+{% endblock %}

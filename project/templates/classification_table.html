@@ -1,0 +1,73 @@
+{% extends 'layouts/base.html' %} 
+
+{% block title %} Classification Information {% endblock title %}
+
+{% block styles %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block content %}
+{% include "includes/navigation-light.html" %}
+
+<header style="padding-top:50px">
+	<h1>Plant Pathology Classification Information</h1>
+</header>
+
+<table class="table">
+  <thead>
+	<tr>
+	  <th scope="col">ID</th>
+	  <th scope="col">Classification Name</th>
+	  <th scope="col">Background Information</th>
+	  <th scope="col">Treatment Information</th>
+	  <th scope="col">Sources</th>
+	</tr>
+  </thead>
+  <tbody>
+	{% for class in classes %}
+	<tr>
+	  <td>{{ class.id }}</td>
+	  <td>{{ class.classification_name }}</td>
+	  <td>{{ class.background_info }}</td>
+	  <td>{{ class.treatment_info }}</td>
+	  <td>{{ class.sources }}</td>
+	</tr>
+	{% endfor %}
+  </tbody>
+</table>
+
+<section class="py-7">
+	<div class="container">
+	  <div class="row justify-space-between py-2">
+      <div class="col-lg-4 mx-auto">
+        <ul class="pagination pagination-primary m-4">
+          <li class="page-item">
+          <a class="page-link" href="/classification_table/{{ pages.begin }}/{{limit}}">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">First</span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="/classification_table/{{ pages.prev }}/{{limit}}" aria-label="Previous">
+          <span aria-hidden="true"><i class="fa fa-angle-double-left" aria-hidden="true"></i></span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="/classification_table/{{ pages.next }}/{{limit}}" aria-label="Next">
+          <span aria-hidden="true"><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="/classification_table/{{ pages.end }}/{{limit}}">
+          <span class="sr-only">Last</span>
+          <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+        </ul>
+      </div>
+    </div>
+	</div>
+</section>
+{% endblock %}

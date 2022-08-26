@@ -1,0 +1,139 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Plant Diagnosis {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block body_class %} forms-sections {% endblock body_class %}
+
+{% block content %}
+
+  {% include "includes/navigation-light.html" %}
+
+
+<div class="container">
+  <header style="padding-top:50px">
+    <h1>Plant Diagnosis</h1>
+  </header>
+
+<img src="{{image_path}}" width="100%" height="100%">
+
+{% if classifications %}
+<div class="container mt-sm-5 mt-3">
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="position-sticky pb-lg-5 pb-3 mt-lg-0 mt-5 ps-2" style="top: 100px">
+        <h3>Symptoms</h3>
+        <h6 class="text-secondary font-weight-normal pe-3">A list of all diseases found in the image. Unhealthy leaves with too many diseases to classify visually will have the complex class, and may also have a subset of the diseases identified.</h6>
+      </div>
+    </div>
+
+    <div class="col-lg-9">
+      <div class="row mt-3">
+        <!-- Symptoms -->
+        <div class="col-12">
+          <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-7">
+            <div class="container border-bottom">
+              <div class="row justify-space-between py-2">
+                <div class="col-lg-10 me-auto">
+                  <p class="lead text-dark pt-1 mb-0">{{classifications}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% if info %}
+<div class="container mt-sm-5 mt-3">
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="position-sticky pb-lg-5 pb-3 mt-lg-0 mt-5 ps-2" style="top: 100px">
+        <h3>Background and Treatment</h3>
+        <h6 class="text-secondary font-weight-normal pe-3">Get the right diagnosis and set up a treatment plan to cure your plant.</h6>
+      </div>
+    </div>
+    <div class="col-lg-9">
+      <div class="row mt-3">
+        <!-- Background and Treatment -->
+        {% for i in info %}
+        <div class="col-12">
+          <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-7">
+            <div class="container border-bottom">
+              <div class="row justify-space-between py-2">
+                <div class="col-lg-3 me-auto">
+                  <p class="lead text-dark pt-1 mb-0">{{i.classification_name}}</p>
+                </div>
+                <div class="col-lg-4">
+                  <div class="nav-wrapper position-relative end-0">
+                    <ul class="nav nav-pills nav-fill flex-row p-1" role="tablist">
+                      <li class="nav-item">
+                        <a class="nav-link mb-0 px-0 py-1 active" data-bs-toggle="tab" href="#background-btn" role="tab" aria-controls="background" aria-selected="true">
+                          <i class="fas fa-desktop text-sm me-2"></i> Background
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="#treatment-btn" role="tab" aria-controls="treatment" aria-selected="false">
+                          <i class="fas fa-code text-sm me-2"></i> Treatment
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-content tab-space">
+              <div class="tab-pane active" id="background-btn">
+                <p class="lead mb-0">
+                  {{i.background_info}}
+                </p>      
+              </div>
+              <div class="tab-pane" id="treatment-btn">
+                <p class="lead mb-0">
+                  {{i.treatment_info}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+
+{% if info %}
+<div class="container mt-sm-5 mt-3">
+  <h2> Additional Information  :</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Classification Name</th>
+	      <th scope="col">Background Information</th>
+	      <th scope="col">Treatment Information</th>
+	      <th scope="col">Sources</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in info %}
+      <tr>
+        <td>{{ i.classification_name }}</td>
+        <td>{{ i.background_info }}</td>
+	      <td>{{ i.treatment_info }}</td>
+	      <td>{{ i.sources }}</td>
+      </tr>
+	    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endif %}
+
+</div>
+{% endblock %}
