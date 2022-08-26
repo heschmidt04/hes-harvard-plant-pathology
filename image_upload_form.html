@@ -1,0 +1,91 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Plant Diagnosis {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block body_class %} forms-sections {% endblock body_class %}
+
+{% block content %}
+  
+  {% include "includes/navigation-light.html" %}
+
+  <section>
+    <div class="container py-4">
+      <div class="row">
+        <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
+          <div class="card d-flex justify-content-center p-4 shadow-lg">
+            <div class="text-center">
+              <h3 class="text-gradient text-primary">Plant Diagnosis</h3>
+              <p class="mb-0">
+
+                Find out what's wrong with your plant and get a plan to bring it back to full health.
+              </p>
+            </div>
+                <div class="card-body pb-2">
+                  <div class="card card-plain">
+                    <form class="form needs-validation" role="form" id="image-upload-form" method="post" autocomplete="off" action="/diagnose" enctype="multipart/form-data">
+                      {{ form.csrf_token }}
+                      {% for field in form %}
+                        {% if field.id != 'submit' and field.id != 'csrf_token' %}
+                          <div class="row">
+                            <label>Plant image</label>
+                            <div class="form-group">
+                              <input type="file" name="Image" class="form-control-file">
+                              {% for error in form.errors %}
+                              <small class="text-danger">{{ error }}</small>  
+                              {% endfor %}
+                          </div>
+                        </div>
+                        {% endif %}
+                      {% endfor %}           
+                  <div class="row">
+                    <div>
+                      <label>Type of plant</label>
+                      <div class="input-group mb-4">
+                        <input class="form-control" placeholder="Haworthia" aria-label="Plant Type" type="text" >
+                      </div>
+                    </div>
+
+                    <div>
+                      <label>Plotting</label>
+                      <div class="input-group mb-4">
+                        <input class="form-control" placeholder="Plastic pot" aria-label="Plotting" type="text" >
+                      </div>
+                    </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Last watered</label>
+                      <div class="input-group mb-4">
+                        <input class="form-control" placeholder="Today" type="text" >
+                      </div>
+                    </div>
+                    <div class="col-md-6 ps-md-2">
+                      <label>Distance to window</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" placeholder="3 ft" >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-submit">
+                    <div class="col-md-12 text-center">
+                      {{ form.submit(class="btn bg-gradient-primary mt-3 mb-0") }}
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}
+
+<script src="/static/assets/js/soft-design-system.min.js?v=1.0.1" type="text/javascript"></script>
+
+{% endblock javascripts %}
