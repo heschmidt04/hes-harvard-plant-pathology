@@ -33,40 +33,40 @@ The purpose of this project is to develop an image classification model to accur
 
 The main components of the app are:
 
-1. **Base** - It consists of a function for users to upload their images, where our application will classify the health of the plant and return the health category of the plant.
+1. **Base** - It consists of a function for users to upload their images, where our application will classify the health of the plant and return the health category of the plant. 
 
-2. **Model** - The image classification moddel is a multi-classification modul, built using Tensorflow.
+2. **Model** - The image classification moddel is a multi-classification modul, built using Tensorflow. 
 
 
 ## Project Timeline
 
 # Milestone 1 Tasks
 
-### Andrea Cheang, Heidi E. Schmidt, Matthew Thanos
+### Andrea Cheang, Heidi E. Schmidt, Matthew Thanos 
 
 1. Github repository **COMPLETE**
 
 ### Heidi E. Schmidt
 1. Process book **COMPLETE**
 1. Project plan **COMPLETE**
-
+   
 ### All:
 1. Choose data set **COMPLETE**
 1. Cite all work **COMPLETE**
-
+  
 
 # Milestone 2 Tasks
 
 1. Clean Dataset - Everyone **COMPLETE**
 - EDA: Find the percentage of 5 categories (plot bar chart); Find out image dimensions (plot scatterplot)
 2. Create Heroku app - Andrea **COMPLETE**
-- Copy over Lab 1 app structure
+- Copy over Lab 1 app structure 
 3. Come up with write-up on goal of the project and description of dataset - Matthew **COMPLETE**
 
 
 # Milestone 3 Tasks
 
-Create MVP
+Create MVP 
 1. Train the model - Andrea **COMPLETE**
 2. Do up frontend of website - Matthew **COMPLETE**
 3. Do up backend (Connect to a database) - Heidi **COMPLETE**
